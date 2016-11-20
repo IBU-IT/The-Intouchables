@@ -1,0 +1,1 @@
+C:\Users\acer\Desktop\IoToyApp\IoToyApp\IoToyApp.csproj;x86
