@@ -1,35 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+﻿using Microsoft.Azure.Devices.Client;
+using Microsoft.Azure.Devices;
+using System;
+using System.Text;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+using System.Threading.Tasks;
 
 namespace IoToyApp
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MainPage : Page
     {
+        static DeviceClient deviceClient;
+        static ServiceClient serviceClient;
+        static string connectionString = "{iot hub connection string}";
+        static string iotHubUri = "{iot hub hostname}";
+        static string deviceKey = "{app key}";
+        static string receivedData;
         public MainPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+            deviceClient = DeviceClient.Create(iotHubUri, new DeviceAuthenticationWithRegistrySymmetricKey("appName", deviceKey));
+            serviceClient = ServiceClient.CreateFromConnectionString(connectionString);
+            ReceiveCloudToDeviceAsync();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private async void button_Click(object sender, RoutedEventArgs e)
         {
-
+            await SendCloudToDeviceMessageAsync("1");
         }
+
+
+        private async static Task SendCloudToDeviceMessageAsync(string commandString)
+        {
+            var commandMessage = new Microsoft.Azure.Devices.Message(Encoding.ASCII.GetBytes(commandString));
+            await serviceClient.SendAsync("device Name", commandMessage);
+        }
+
+        private static async void ReceiveCloudToDeviceAsync()
+        {
+            while (true)
+            {
+                Microsoft.Azure.Devices.Client.Message receivedMessage = await deviceClient.ReceiveAsync();
+                receivedData = Encoding.ASCII.GetString(receivedMessage.GetBytes());
+                await deviceClient.CompleteAsync(receivedMessage);
+            }
+        }
+
+
     }
 }
