@@ -10,18 +10,12 @@ namespace IoToyApp
 {
     public sealed partial class MainPage : Page
     {
-        static DeviceClient deviceClient;
         static ServiceClient serviceClient;
-        static string connectionString = "{iot hub connection string}";
-        static string iotHubUri = "{iot hub hostname}";
-        static string deviceKey = "{app key}";
-        static string receivedData;
+        static string connectionString = "HostName=TheIntouchablesOOP.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=QTiRXXO6nteHDLVs0Gx1rE+oUbqqOL5fmAoO9ZP3B4w=";
         public MainPage()
         {
             InitializeComponent();
-            deviceClient = DeviceClient.Create(iotHubUri, new DeviceAuthenticationWithRegistrySymmetricKey("appName", deviceKey));
             serviceClient = ServiceClient.CreateFromConnectionString(connectionString);
-            ReceiveCloudToDeviceAsync();
         }
 
         private async void button_Click(object sender, RoutedEventArgs e)
@@ -29,21 +23,30 @@ namespace IoToyApp
             await SendCloudToDeviceMessageAsync("1");
         }
 
+        private async void Up_Click(object sender, RoutedEventArgs e)
+        {
+            await SendCloudToDeviceMessageAsync("Up");
+        }
+        private async void Down_Click(object sender, RoutedEventArgs e)
+        {
+            await SendCloudToDeviceMessageAsync("Down");
+        }
+        private async void Right_Click(object sender, RoutedEventArgs e)
+        {
+            await SendCloudToDeviceMessageAsync("Right");
+        }
+        private async void Left_Click(object sender, RoutedEventArgs e)
+        {
+            await SendCloudToDeviceMessageAsync("Left");
+        }
+
+
+
 
         private async static Task SendCloudToDeviceMessageAsync(string commandString)
         {
             var commandMessage = new Microsoft.Azure.Devices.Message(Encoding.ASCII.GetBytes(commandString));
-            await serviceClient.SendAsync("device Name", commandMessage);
-        }
-
-        private static async void ReceiveCloudToDeviceAsync()
-        {
-            while (true)
-            {
-                Microsoft.Azure.Devices.Client.Message receivedMessage = await deviceClient.ReceiveAsync();
-                receivedData = Encoding.ASCII.GetString(receivedMessage.GetBytes());
-                await deviceClient.CompleteAsync(receivedMessage);
-            }
+            await serviceClient.SendAsync("TheIntouchables", commandMessage);
         }
 
 

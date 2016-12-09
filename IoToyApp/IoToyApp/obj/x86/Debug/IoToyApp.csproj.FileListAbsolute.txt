@@ -311,7 +311,6 @@ C:\Users\Ermin Podrug\Desktop\The Intouchables\IoToyApp\IoToyApp\bin\x86\Debug\S
 C:\Users\Ermin Podrug\Desktop\The Intouchables\IoToyApp\IoToyApp\bin\x86\Debug\System.Xml.XmlDocument.dll
 C:\Users\Ermin Podrug\Desktop\The Intouchables\IoToyApp\IoToyApp\bin\x86\Debug\System.Xml.XmlSerializer.dll
 C:\Users\Ermin Podrug\Desktop\The Intouchables\IoToyApp\IoToyApp\bin\x86\Debug\Validation.dll
-C:\Users\Ermin Podrug\Desktop\The Intouchables\IoToyApp\IoToyApp\obj\x86\Debug\IoToyApp.csprojResolveAssemblyReference.cache
 C:\Users\Ermin Podrug\Desktop\The Intouchables\IoToyApp\IoToyApp\obj\x86\Debug\App.g.i.cs
 C:\Users\Ermin Podrug\Desktop\The Intouchables\IoToyApp\IoToyApp\obj\x86\Debug\App.g.cs
 C:\Users\Ermin Podrug\Desktop\The Intouchables\IoToyApp\IoToyApp\obj\x86\Debug\MainPage.g.i.cs
@@ -400,3 +399,4 @@ C:\Users\Ermin Podrug\Desktop\The Intouchables\IoToyApp\IoToyApp\obj\x86\Debug\P
 C:\Users\Ermin Podrug\Desktop\The Intouchables\IoToyApp\IoToyApp\obj\x86\Debug\ProjectArchitectures.txt
 C:\Users\Ermin Podrug\Desktop\The Intouchables\IoToyApp\IoToyApp\bin\x86\Debug\Microsoft.Azure.Devices.Uwp.dll
 C:\Users\Ermin Podrug\Desktop\The Intouchables\IoToyApp\IoToyApp\obj\x86\Debug\Microsoft.Azure.Devices.Uwp.pri.xml
+C:\Users\Ermin Podrug\Desktop\The Intouchables\IoToyApp\IoToyApp\obj\x86\Debug\IoToyApp.csprojResolveAssemblyReference.cache

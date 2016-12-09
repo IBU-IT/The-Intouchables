@@ -12,7 +12,7 @@ namespace IDCodeGenerator
     {
         static RegistryManager registryManager;
         //connectionString = "{iothub connection string}";
-        static string connectionString = "HostName=EESTECIOT.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=ztPbN7r7r8j0x3qDtDnEyhzj1Beq8+gmbgJIrf6RU9E=";
+        static string connectionString = "HostName=TheIntouchablesOOP.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=QTiRXXO6nteHDLVs0Gx1rE+oUbqqOL5fmAoO9ZP3B4w=";
 
         static void Main(string[] args)
         {
@@ -23,7 +23,7 @@ namespace IDCodeGenerator
 
         private static async Task AddDeviceAsync()
         {
-            string deviceId = "RPiUWPKodMustafe";
+            string deviceId = "TheIntouchables";
             Device device;
             try
             {
